@@ -8,7 +8,7 @@ import cv2
 from mss import mss
 import pyautogui
 
-# ---------------------- Classes ----------------------
+# Classes
 class PerformanceTracker:
     def __init__(self):
         self.total_clicks = 0
@@ -64,7 +64,7 @@ class QLearningAgent:
         state_qs[action] = (1 - self.alpha) * old_value + self.alpha * (reward + self.gamma * next_max)
 
 
-# ---------------------- Functions ----------------------
+# Functions
 def detect_circles(image):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     blurred = cv2.GaussianBlur(gray, (9, 9), 2)
@@ -107,7 +107,7 @@ def adaptive_click_with_precision(x, y, delay=0.05):
         return 0.0
 
 
-# ---------------------- Interface ----------------------
+# Interface
 class PerformanceUI:
     def __init__(self, tracker):
         self.tracker = tracker
@@ -136,7 +136,7 @@ class PerformanceUI:
         self.root.mainloop()
 
 
-# ---------------------- loop ----------------------
+# loop
 def autopilot_loop(tracker, stop_event):
     ql_agent = QLearningAgent(action_space=['click', 'hold', 'release'])
     sct = mss()
@@ -212,3 +212,5 @@ if __name__ == "__main__":
         ui.run()
     finally:
         stop_event.set()
+        # made by sailentcoder
+
